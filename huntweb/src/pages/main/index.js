@@ -1,0 +1,19 @@
+import React, { Component } from 'react';
+import api from '../../services/api'; //api criada com node
+
+export default class Main extends Component {
+//componentDidMount executa assim que e criado a pagina
+    componentDidMount() {
+        this.loadProducts();
+    }
+
+    loadProducts = async () => {
+        const response = await api.get('/products');
+
+        console.log(response.data.docs);
+    };
+
+    render() {
+        return  <h1>Hello Word!</h1>
+    }
+}
