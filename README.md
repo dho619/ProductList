@@ -3,6 +3,8 @@ Projeto do Curso da Rocketseat com nodeJS, ReactJS e ReactNative. Contendo a API
 
 Nescessário ter instalado nodeJS, Yarn, docker com o banco mongo instalado, sendo que o banco mongo na api esta com o nome mongodb, caso o seu banco tenha outro nome, será nescessário customizar o node-api.
 
+Como esse programa exibi uma lista de produtos do banco, será nescessário adicionar esses produtos no banco manualmente, pois ainda não foi feito a parte de create, update e nem delete, apenas o get. Para isso, basta usar  o insomnia para adicionar produtos, Explico um pouco mais detalhado mais a frente.
+
 **Links de instalação de ferramentas utilizadas:**
 * Docker Engine - Community : https://docs.docker.com/install/   *** Obrigatório
 * nodejs                    : https://nodejs.org/en/download/    *** Obrigatório
@@ -25,7 +27,13 @@ Nescessário ter instalado nodeJS, Yarn, docker com o banco mongo instalado, sen
         Dentro da pasta node-api execute:
         Se nescessário execute `sudo npm install` e dps `npm start`
         
-        obs: Para testar a API pode usar o insomnia, passando o link base: http://localhost:3001/api
+        obs: Para testar a API e popular o banco pode usar o insomnia, passando o link base: http://localhost:3001/api,
+        crie uma requisição create e adcione alguns produtos desta forma:
+        `{
+                "title": "Produto teste",
+                 "description": "Esse é um produto de teste, feito para ver se esta funcionando a api e pupular o banco",
+                 "url": "urlteste.com.br" 
+          }`
 
 
 * 3 - Inicie o ReactJS:
