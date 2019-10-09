@@ -22,12 +22,14 @@ Como executá-lo:
         obs: para saber se esta rodando corretamente use `sudo docker ps`
 
 * 2 - Inicie a api-node:
+        Dentro da pasta node-api execute:
         Se nescessário execute `sudo npm install` e dps `npm start`
         
         obs: Para testar a API pode usar o insomnia, passando o link base: http://localhost:3001/api
 
 
 * 3 - Inicie o ReactJS:
+        EDentro da pasta huntweb execute:
         Se nescessário execute `sudo yarn install` e dps `yarn start`
 
         obs: Para testar, acesse http://localhost:3000/ caso dê falta do axios, use `sudo yarn add axios` 
