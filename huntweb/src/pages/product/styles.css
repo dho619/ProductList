@@ -1,0 +1,44 @@
+.product-info {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 5px;
+    border: 2px solid #DDD;
+}
+
+.product-info h1 {
+    font-size: 32px;
+}
+
+.product-info p {
+    color: #666;
+    line-height: 24px;
+    margin-top: 5px;
+}
+
+.product-info a {
+    color: #069;
+}
+
+.product-info button {
+    margin: 30px auto 0; /*Ficar centralizado*/
+    padding: 10px;
+    border-radius: 5px; /*Arrendondar as bordas*/
+    border: 2;
+    background: #da552f;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer; /*Muda a seta do mouse para a maozinha em cima do botao*/
+    display: flex; /*Fazer ele ocupar toda a linha*/
+    justify-content: center; /*esse e o de baixo, para centralizar o botao */
+    align-items: center;        
+    transition: all 0.2; /*para as mudancas ao passar o moude, demore 0.2segundos*/
+}
+
+.product-info button:hover {
+    opacity: 0.7;
+    color: #da552f;
+    background: #FFF;
+}

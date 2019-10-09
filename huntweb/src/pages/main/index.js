@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import api from '../../services/api'; //api criada com node
+import { Link } from 'react-router-dom';
+
+import './styles.css';
 
 export default class Main extends Component {
     // usa-se o state para poder acessar essas variaveis externamente
     state = { //state e um objeto
-        products: [],
+        products: [], //title, descricao e demais do produto
+        productInfo: {}, // quantida de pagina, pagina atual e outros
+        page: 1, // pagina atual
     }
 
 //componentDidMount executa assim que e criado a pagina
@@ -12,20 +17,60 @@ export default class Main extends Component {
         this.loadProducts();
     }
  
-    loadProducts = async () => {
-        const response = await api.get('/products');
+    loadProducts = async (page = 1) => {
+        const response = await api.get(`/products?page=${page}`);//usou ` ` para poder colocar  codigo javascript no meio
+        
+        //aqui esta pegando o docs e o resto vai para productInfo 
+        const { docs, ...productInfo} = response.data; //response.data, ta pegando os produtos e informacoes na api
+
         //setState e para alterar o objeto state
-        this.setState({ products: response.data.docs }); //response.data.docs, ta pegando os produtos na api
-    };
+        this.setState({ products: docs, productInfo, page }); 
+    };   //isso "productInfo" e o mesmo que "productInfo: productInfo"
+
+    prevPage = () => {
+        const { page, productInfo} = this.state;
+        
+        //se esta na primeira pagina, ja retorna sem fazer nada
+        if (page === 1) return;
+
+        const pageNumber = page - 1;
+
+        this.loadProducts(pageNumber);
+
+    }
+
+    nextPage = () => {
+        const { page, productInfo} = this.state;
+        
+        //se esta na ultima pagina, ja retorna sem fazer nada
+        if (page === productInfo.pages) return;
+
+        const pageNumber = page + 1;
+
+        this.loadProducts(pageNumber);//chamando a funcao de mostrar a pagina
+
+    }
 
     //render sempre executa novamente, se alguma variavel do state for alterada
     render() {
+        const { products, page, productInfo} = this.state; //desistruturando
+        //aonde era this.state.products.map, fica agr apenas products.map, vale o mesmo para os demais
+
         //a key no h2 e passada, pq o react pede que tenha uma key unica pra cada item da iteracao
         return  (
             <div className="product-list">
-                {this.state.products.map(product => (
-                    <h2 key={product._id}>{product.title}</h2>
+                {//aqui codigo javascript, " apos => ( " volta a ser html
+                  products.map(product => (
+                    <article key={product._id}>
+                        <strong>{product.title}</strong>
+                        <p>{product.description}</p>
+                        <Link to={`/products/${product._id}`}>Acessar</Link>
+                    </article>
                 ))}
+                <div className="actions">
+                    <button disabled={page === 1} onClick={this.prevPage}>Anterior</button>
+                    <button disabled={page === productInfo.pages} onClick={this.nextPage}>Próxima</button>
+                </div> 
             </div>
         )
     }

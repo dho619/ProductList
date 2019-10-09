@@ -1,0 +1,71 @@
+.product-list {
+    max-width: 700px; /*Para nao passar de 700px o bloco de produto*/
+    margin: 20px auto 0; /*Ficar centralizado*/
+    padding: 0 20px; /*margem do lado de dentro, a ordem e cima direita baixo esquerda*/
+}
+
+.product-list article {
+    background: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 5px; /*Arrendondar as bordas*/
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.product-list article p {
+    font-size: 16px;
+    color: #999;
+    margin-top: 5px;
+    line-height: 24px;
+}
+
+.product-list article a {
+    height: 42px;  
+    border-radius:5px; /*Arrendondar as bordas*/
+    border: 2px solid #da552f;
+    background: none;
+    margin-top: 10px;
+    color: #da552f;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex; /*Fazer ele ocupar toda a linha*/
+    justify-content: center; /*esse e o de baixo, para centralizar o botao */
+    align-items: center;        
+    transition: all 0.2; /*para as mudancas ao passar o moude, demore 0.2segundos*/
+}
+
+.product-list article a:hover {
+    background: #da552f;
+    color: #FFF;
+}
+
+.product-list .actions{
+    display: flex; /*Ocupara toda linha*/
+    justify-content: space-between; /*Um todo a esquerda e outro toda a direita*/
+    margin-bottom: 20px; /*Para nao colar na tela*/
+}
+
+.product-list .actions button {
+    padding: 10px;
+    border-radius: 5px; /*Arrendondar as bordas*/
+    border: 0;
+    background: #da552f;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer; /*Muda a seta do mouse para a maozinha em cima do botao*/
+}
+
+.product-list .actions button[disabled] { /*se esta desabilitado*/
+    opacity: 0.5;
+    cursor: default; /*cursor comum*/
+}
+
+.product-list .actions button:hover {
+    opacity: 0.7;
+}
+
+.product-list .actions button[disabled]:hover {
+    opacity:  0.5;/*forcar a nao mudar quando desabilitado*/
+}
