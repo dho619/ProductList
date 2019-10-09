@@ -4,11 +4,11 @@ Projeto do Curso da Rocketseat com nodeJS, ReactJS e ReactNative. Contendo a API
 Nescessário ter instalado nodeJS, Yarn, docker com o banco mongo instalado, sendo que o banco mongo na api esta com o nome mongodb, caso o seu banco tenha outro nome, será nescessário customizar o node-api.
 
 Links de instalação de ferramentas utilizadas:
-        Docker Engine - Community : https://docs.docker.com/install/   *** Obrigatório
-        nodejs                    : https://nodejs.org/en/download/    *** Obrigatório
-        yarn                      : https://yarnpkg.com/en/docs/install#debian-stable *** Obrigatório
-        insomnia                  : https://insomnia.rest/download/
-        VsCode                    : https://code.visualstudio.com/download
+        * Docker Engine - Community : https://docs.docker.com/install/   *** Obrigatório
+        * nodejs                    : https://nodejs.org/en/download/    *** Obrigatório
+        * yarn                      : https://yarnpkg.com/en/docs/install#debian-stable *** Obrigatório
+        * insomnia                  : https://insomnia.rest/download/
+        * VsCode                    : https://code.visualstudio.com/download
 
 Como executá-lo: 
 
