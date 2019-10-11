@@ -1,0 +1,21 @@
+footer#rodape {
+	clear: both;
+    
+    max-width: 1000px; /*Para nao passar de 100px o bloco de produto*/
+    margin: 5px auto 0; /*Ficar centralizado*/
+}
+
+footer#rodape a#link {
+    color: #da552f;
+}
+
+footer#rodape a#link:hover {
+    color: #da552f;
+}
+
+footer#rodape p {
+	text-align: center;
+        font-size: 9pt;
+        color: rgba(219, 64, 25, 0.877);
+        font-family: sans-serif;
+}

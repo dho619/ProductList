@@ -7,6 +7,16 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #fafafa;
+    background: #dbd6d6;
     color: #333;
+}
+
+.master {
+    max-width: 1000px; /*Para nao passar de 100px o bloco de produto*/
+    margin: 0px auto 0; /*Ficar centralizado*/
+    padding: 0 20px; /*margem do lado de dentro, a ordem e cima direita baixo esquerda*/
+    background: rgb(236, 230, 230);
+    border: 1px solid #DDD;
+    border-radius: 5px; /*Arrendondar as bordas*/
+    padding: 20px;
 }
