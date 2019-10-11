@@ -4,6 +4,10 @@
     padding: 0 20px; /*margem do lado de dentro, a ordem e cima direita baixo esquerda*/
 }
 
+.product-list h1 {
+    margin-top: 30px;
+}
+
 .product-list article {
     background: #FFF;
     border: 1px solid #DDD;
@@ -68,4 +72,38 @@
 
 .product-list .actions button[disabled]:hover {
     opacity:  0.5;/*forcar a nao mudar quando desabilitado*/
+}
+
+.product-list .header {
+    display: flex; /*Ocupara toda linha*/
+    justify-content: space-between; /*esse e o de baixo, para centralizar o botao */
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.product-list .buttons {
+    display: flex; /*Ocupara toda linha*/
+    justify-content: flex-end; /*esse e o de baixo, para centralizar o botao */
+    align-items: flex-end;
+}
+
+.product-list .btIcon {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #FFF;
+    border: 2px solid #da552f;
+    border-radius:15px; /*Arrendondar as bordas*/
+    height: 40px;
+    cursor: pointer; /*Muda a seta do mouse para a maozinha em cima do botao*/
+}
+
+.product-list .btIcon img  {
+    height: 30px;
+    margin-top: 2px;
+
+}
+
+.product-list .btIcon:hover {
+    background: #da552f;
+    border: 2px solid #000000;
 }

@@ -1,9 +1,9 @@
 import React, { Component} from 'react';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 import './styles.css';
 
-const carregar = require('../main/index');
+//const carregar = require('../../main/index');
 
 
 export default class Product extends Component {
@@ -31,7 +31,7 @@ export default class Product extends Component {
                 <h1>{product.title}</h1>
                 <p>{product.description}</p>
                 <p> 
-                    URL: <a href={product.url}>{product.url}</a>
+                    URL: <a target="_blank" href={''}>{product.url}</a>
                 </p>
                 <button onClick={this.prevPage}>Voltar</button>
             </div>

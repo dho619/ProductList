@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import api from '../../services/api'; //api criada com node
 import { Link } from 'react-router-dom';
 
+import logoDel from '../../img/IconDel.png';
+import logoEdt from '../../img/IconEdt.png';
+import logoNew from '../../img/IconNew.png';
+
 import './styles.css';
 
 export default class Main extends Component {
@@ -51,6 +55,11 @@ export default class Main extends Component {
 
     }
 
+    DeleteProduct = async (id, page = 1) => {
+        const response = await api.delete(`/products/${id}`);
+        this.loadProducts(page);
+    }
+
     //render sempre executa novamente, se alguma variavel do state for alterada
     render() {
         const { products, page, productInfo} = this.state; //desistruturando
@@ -59,12 +68,22 @@ export default class Main extends Component {
         //a key no h2 e passada, pq o react pede que tenha uma key unica pra cada item da iteracao
         return  (
             <div className="product-list">
+                
+                
+                <div className='header'>
+                    <h1>Sua Lista de Produtos:</h1>
+                    <Link to={`/createProducts`} title='Novo Produto' className='btIcon'><img src={logoNew}/></Link>     
+                </div>
                 {//aqui codigo javascript, " apos => ( " volta a ser html
                   products.map(product => (
                     <article key={product._id}>
                         <strong>{product.title}</strong>
                         <p>{product.description}</p>
                         <Link to={`/products/${product._id}`}>Acessar</Link>
+                        <div className='buttons'>
+                            <Link to={`/createProducts`} title='Editar' className='btIcon'><img src={logoEdt}/></Link>
+                            <button title='Deletar' className='btIcon' onClick= {() => {this.DeleteProduct(product._id, page);}}><img src={logoDel}/></button>
+                        </div>
                     </article>
                 ))}
                 <div className="actions">
@@ -72,6 +91,7 @@ export default class Main extends Component {
                     <button disabled={page === productInfo.pages} onClick={this.nextPage}>Próxima</button>
                 </div> 
             </div>
+            
         )
     }
 }
