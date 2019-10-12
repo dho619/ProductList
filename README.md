@@ -27,7 +27,7 @@ Implementado o backend nodeJS e o frontend em reactJS - além do que foi feito n
         Dentro da pasta node-api execute:
         Se nescessário execute `sudo npm install` e dps `npm start`
         
-        obs: Para testar a API e popular o banco pode usar o insomnia, passando o link base: http://localhost:3001/api
+        obs: Para testar a API passando o link base: http://localhost:3001/api
 
 
 * 3 - Inicie o ReactJS:
