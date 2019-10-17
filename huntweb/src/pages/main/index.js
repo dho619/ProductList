@@ -7,6 +7,7 @@ import iconEdt from '../../img/IconEdt.png';
 import iconNew from '../../img/IconNew.png';
 
 import './styles.css';
+import { isAuthenticated} from '../../auth';
 
 export default class Main extends Component {
     // usa-se o state para poder acessar essas variaveis externamente
@@ -23,7 +24,7 @@ export default class Main extends Component {
  
     loadProducts = async (page = 1) => {
         const response = await api.get(`/products?page=${page}`);//usou ` ` para poder colocar  codigo javascript no meio
-        
+
         //aqui esta pegando o docs e o resto vai para productInfo 
         const { docs, ...productInfo} = response.data; //response.data, ta pegando os produtos e informacoes na api
 
@@ -56,8 +57,12 @@ export default class Main extends Component {
     }
 
     DeleteProduct = async (id, page = 1) => {
-        const response = await api.delete(`/products/${id}`);
-        this.loadProducts(page);
+        if (isAuthenticated())  {
+            const response = await api.delete(`/products/${id}`);
+            this.loadProducts(page);
+        }else {
+            alert('Para poder deletar, entre em sua conta!');
+        };
     }
 
     //render sempre executa novamente, se alguma variavel do state for alterada
@@ -70,8 +75,7 @@ export default class Main extends Component {
             <div className="product-list"> 
                 <div className='header'>
                     <h1>Sua Lista de Produtos:</h1>
-                    <Link to={`/createProducts`} title='Novo Produto' className='btIcon'><img src={iconNew}/></Link>
-                            
+                    <Link to={`/createProducts`} title='Novo Produto' className='btIcon'><img src={iconNew}/></Link>    
                 </div>
                 {//aqui codigo javascript, apos "=> (" volta a ser html
                 products.map(product => (

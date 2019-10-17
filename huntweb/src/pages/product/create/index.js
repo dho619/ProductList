@@ -3,7 +3,6 @@ import api from '../../../services/api';
 
 import './styles.css';
 
-const carregar = require('../../main/index');
 
 
 export default class Product extends Component {
