@@ -11,11 +11,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    logado: {
-        type: Boolean,
-        default: false,
-    },
-    createdAt: {
+    createdAt: { //data que foi criado
         type: Date,
         default: Date.now,
     },
