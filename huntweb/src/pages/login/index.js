@@ -11,19 +11,33 @@ import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import './styles.css'; 
 
+import api from '../../services/api'; //api criada com node
 
 
 
 export default class SignIn extends Component {
   state = { //state e um objeto
-    
+    userInfo: {}
   }
 
   fazerLogin = async (login, password) => {
-
-    if (login === 'admin' && password === 'admin') {
-      alert('você logou!');
+    const data = {
+      'user': login,
+      'password': password
     }
+    alert('chegou aqui!');
+    /*Enviando produto para o banco */
+    const response = await api.post('/users-login/', data);
+
+    alert('chegou aqui!');
+    alert(response.data);/*
+    const { usuarioValido, token } = response.data;
+
+    alert('resposta:' +usuarioValido);
+    alert('token: ' + token);
+    if (usuarioValido) {
+      alert('você logou!');
+    }*/
   }
 
   render() {
