@@ -22,23 +22,32 @@ export default class SignIn extends Component {
 
   fazerLogin = async (login, password) => {
     const data = {
-      'user': login,
-      'password': password
-    }
-    alert('chegou aqui!');
+      "user": login,
+      "password": password
+    };
     /*Enviando produto para o banco */
-    const response = await api.post('/users-login/', data);
+    const response = await api.post(`/users-login`,data);
 
-    alert('chegou aqui!');
-    alert(response.data);/*
-    const { usuarioValido, token } = response.data;
-
-    alert('resposta:' +usuarioValido);
-    alert('token: ' + token);
-    if (usuarioValido) {
-      alert('você logou!');
-    }*/
+   
+    const { userlogin, jwt } = response.data;
+    if (userlogin) {
+      window.location.href= "/";
+    }
   }
+
+  enterInLogin(event) {
+    if(event.keyCode === 13){		
+			document.getElementById('password').focus();
+		}
+  }
+
+  enterInPassword(event) {
+    if(event.keyCode === 13){		
+			this.fazerLogin(document.getElementById("login").value, document.getElementById("password").value);
+		}
+  }
+
+  enterP
 
   render() {
   return (
@@ -60,6 +69,7 @@ export default class SignIn extends Component {
             name="login"
             autoComplete="login"
             autoFocus
+            //onKeyPress={() => {this.enterInLogin(event);}}
           />
           <TextField
             variant="outlined"
@@ -71,6 +81,7 @@ export default class SignIn extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
+            onKeyPress={() => {this.enterInPassword()}}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

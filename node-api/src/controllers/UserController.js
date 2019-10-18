@@ -65,7 +65,7 @@ module.exports = {//modulos disponiveis externamente
 
             await User.findOne({user: user}, function(err,obj) { 
                 if (!obj){ //nesse caso, se nao existe, retorna erro
-                    return res.json('Usuario nao existe');
+                    return res.json({"userlogin": false, "message": "Usuario nao existe"});
                 }else{
                     userInfo = obj; // se achar, guardas informacoes do usuario
                 }
@@ -73,13 +73,14 @@ module.exports = {//modulos disponiveis externamente
             const hashedPassword = userInfo.password; // pega a senha
             
             if (!await bcrypt.compare(password, hashedPassword)){ //compara com a senha
-                return res.json('Senha Invalida!'); // se a senha estiver incorreta
+                return res.json({"userlogin": false, "message": "Senha invalida"}); // se a senha estiver incorreta
             }   
 
             const token = jwt.sign(user, jwtSecret); //cria um tokem
-            return res.json(`userCreated: true, jwt: ${token}`); //exibe que deu certo e mostra o token
+            return res.json( {"userlogin": true, "jwt": token}); //exibe que deu certo e mostra o token
+
         } catch (error) {
-            return res.json('Nao foi possivel completar o login!');//caso de algum erro
+            return res.json({"userlogin": false, "message": "Nao foi possivel fazer login"});//caso de algum erro
         }
         
     },

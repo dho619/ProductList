@@ -58,7 +58,7 @@ export default class Main extends Component {
 
     DeleteProduct = async (id, page = 1) => {
         if (isAuthenticated())  {
-            const response = await api.delete(`/products/${id}`);
+            await api.delete(`/products/${id}`);
             this.loadProducts(page);
         }else {
             alert('Para poder deletar, entre em sua conta!');
