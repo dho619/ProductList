@@ -11,43 +11,28 @@ import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import './styles.css'; 
 
-import api from '../../services/api'; //api criada com node
+import { onSignIn } from '../../auth';
 
 
 
-export default class SignIn extends Component {
+export default class PageSignIn extends Component {
   state = { //state e um objeto
     userInfo: {}
   }
 
-  fazerLogin = async (login, password) => {
-    const data = {
-      "user": login,
-      "password": password
-    };
-    /*Enviando produto para o banco */
-    const response = await api.post(`/users-login`,data);
-
-   
-    const { userlogin, jwt } = response.data;
-    if (userlogin) {
-      window.location.href= "/";
-    }
-  }
-
+  //se der enter dentro de login /*Tem que desativar a atualizacao automatica do TextField*/
   enterInLogin(event) {
     if(event.keyCode === 13){		
 			document.getElementById('password').focus();
 		}
   }
 
+  //Se der enter em Password
   enterInPassword(event) {
     if(event.keyCode === 13){		
-			this.fazerLogin(document.getElementById("login").value, document.getElementById("password").value);
+      onSignIn(document.getElementById("login").value, document.getElementById("password").value);
 		}
   }
-
-  enterP
 
   render() {
   return (
@@ -62,14 +47,14 @@ export default class SignIn extends Component {
           <TextField
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             id="login"
             label="Seu Login"
             name="login"
             autoComplete="login"
             autoFocus
-            //onKeyPress={() => {this.enterInLogin(event);}}
+            onKeyDown={this.enterInLogin}
+            
           />
           <TextField
             variant="outlined"
@@ -81,7 +66,7 @@ export default class SignIn extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
-            onKeyPress={() => {this.enterInPassword()}}
+            onKeyDown={this.enterInPassword}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -94,7 +79,7 @@ export default class SignIn extends Component {
             variant="contained"
             color="primary"
             className='submit'
-            onClick={() => {this.fazerLogin(document.getElementById("login").value, document.getElementById("password").value); }}
+            onClick={() => {onSignIn(document.getElementById("login").value, document.getElementById("password").value); }}
           >
             Fazer Login
             </Button>

@@ -9,7 +9,7 @@ export const useStyles = makeStyles(theme => ({
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: theme.palette.common.white,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
@@ -19,4 +19,4 @@ export const useStyles = makeStyles(theme => ({
       margin: theme.spacing(3, 0, 2),
       backgroundColor: theme.palette.common.black,
     },
-  }));
+}));

@@ -1,12 +1,36 @@
-header#main-header{
+.my_header{
     width: 100%;
     height: 60%;
     background: #da552f;
-    font-size: 18px;
-    font-weight: bold;
-    color: #FFF;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    display: flex;
+}
+
+header#main-header{
+    
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.IconLogInLogout {
+    position: initial;
+    justify-content: end;
+    align-items: end;
+    display: block;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #da552f;
+    border: 2px solid #da552f;
+    border-radius:10px; /*Arrendondar as bordas*/
+    height: 40px;
+    cursor: pointer; /*Muda a seta do mouse para a maozinha em cima do botao*/
+}
+
+.IconLogInLogout img  {
+    height: 30px;
+    margin-top: 2px;
+    background-color: #da552f;
 }
