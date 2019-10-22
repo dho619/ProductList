@@ -24,7 +24,12 @@ const loginOrLogout = () => {
 const Header = () => (
     <div className='my_header'>
         <header id="main-header">JSHunt</header>
-        <button title='Logout' className='IconLogInLogout' onClick= {() => {loginOrLogout();}}><img src={icon}/>{iconDesc}</button>
+        <div className='login' >
+            <button title={iconDesc} className='IconLogInLogout' onClick= {() => {loginOrLogout();}}><img src={icon}/>
+                <h2>{iconDesc}</h2>
+            </button>
+        </div>
+        
     </div>
 );
 

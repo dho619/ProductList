@@ -2,15 +2,20 @@
     width: 100%;
     height: 60%;
     background: #da552f;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    display: flex;
+    padding: 10px;
+    display: flex; /*Ocupara toda linha*/
+    justify-content: space-between; /*Um todo a esquerda e outro toda a direita*/
+    margin-bottom: 20px; /*Para nao colar na tela*/
+}
+
+.login{
+    display: flex; /*Ocupara toda linha*/
+    justify-self: space-between;
+    margin-top: -10px;
 }
 
 header#main-header{
-    
-    font-size: 28px;
+    font-size: 48px;
     font-weight: bold;
     color: #FFF;
 }

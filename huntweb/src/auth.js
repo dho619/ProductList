@@ -8,17 +8,16 @@ export const isAuthenticated = () => {
 
 //funcao para fazer login
 export const onSignIn = async (login, password) => {
-    
+  
     const data = {
       "user": login,
       "password": password
-    };
+    };	
     /*Enviando informacoes de login para o banco */
     const response = await api.post(`/users-login`,data);
-    
-   
     const { userlogin, jwt } = response.data;
-    if (userlogin) {
+    alert(jwt);
+    if (userlogin) {	
         localStorage.setItem('TOKEN_KEY', jwt);
         window.location.href= "/";
     }

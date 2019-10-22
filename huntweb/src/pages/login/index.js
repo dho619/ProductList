@@ -29,7 +29,7 @@ export default class PageSignIn extends Component {
 
   //Se der enter em Password
   enterInPassword(event) {
-    if(event.keyCode === 13){		
+    if(event.keyCode === 13){	
       onSignIn(document.getElementById("login").value, document.getElementById("password").value);
 		}
   }
