@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './pages/login';
-import Login2 from './pages/login2';
+import Register from './pages/register';
 import Main from './pages/main';
 import Product from './pages/product/get';
 import CreateProducts from './pages/product/create';
@@ -28,7 +28,8 @@ const Routes = () => (
         <Switch>
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
-            <Route path="/login2" component={Login2} />
+            <Route path="/register" component={Register} />
+
             <PrivateRoute path="/products/:id" component={Product} />
             <PrivateRoute path="/createProducts/" component={CreateProducts} />
             <PrivateRoute path="/updateProducts/:id" component={UpdateProducts} />

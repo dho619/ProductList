@@ -10,11 +10,10 @@ app.use(cors());
 //Iniciando o DB
 mongoose.connect(
     'mongodb://localhost:27017/nodeapi', 
-    {useNewUrlParser: true}
+    {useNewUrlParser: true},
 );
+
 requireDir('./src/models'); //mostrando o diretorio dos models
-
-
 
 //Rotas
 app.use('/api', require('./src/routes'));

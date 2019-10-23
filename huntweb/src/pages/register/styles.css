@@ -1,0 +1,13 @@
+.paper {
+  max-width: 700px; /*Para nao passar de 700px o bloco de produto*/
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.form {
+  margin-top: 15px;
+}
+

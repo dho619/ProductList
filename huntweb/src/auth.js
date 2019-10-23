@@ -14,12 +14,13 @@ export const onSignIn = async (login, password) => {
       "password": password
     };	
     /*Enviando informacoes de login para o banco */
-    const response = await api.post(`/users-login`,data);
+    const response = await api.post('/usersLogin',data);
     const { userlogin, jwt } = response.data;
-    alert(jwt);
     if (userlogin) {	
         localStorage.setItem('TOKEN_KEY', jwt);
         window.location.href= "/";
+    } else {
+      alert('Login ou senha incorreta!');
     }
   }
 

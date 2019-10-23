@@ -71,11 +71,9 @@ module.exports = {//modulos disponiveis externamente
                 }
             })
             const hashedPassword = userInfo.password; // pega a senha
-            
             if (!await bcrypt.compare(password, hashedPassword)){ //compara com a senha
                 return res.json({"userlogin": false, "message": "Senha invalida"}); // se a senha estiver incorreta
             }   
-
             const token = jwt.sign(user, jwtSecret); //cria um tokem
             return res.json( {"userlogin": true, "jwt": token}); //exibe que deu certo e mostra o token
 

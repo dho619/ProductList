@@ -14,8 +14,8 @@ routes.delete('/products/:id', ProductController.destroy); //apagar registro
 
 //usuarios
 routes.get('/users', UserController.index); //mostrar todos usuarios
-routes.post('/users-login', UserController.loginUser); //logar conta
-routes.post('/users-create', UserController.createUser); //criar usuario
+routes.post('/usersLogin', UserController.loginUser); //logar conta
+routes.post('/usersCreate', UserController.createUser); //criar usuario
 routes.put('/users/:id', UserController.update); //atualizar informacoes
 routes.delete('/users/:id', UserController.destroy); //apagar usuario
 

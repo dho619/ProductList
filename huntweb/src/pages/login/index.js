@@ -17,21 +17,8 @@ import { onSignIn } from '../../auth';
 
 export default class PageSignIn extends Component {
   state = { //state e um objeto
-    userInfo: {}
-  }
-
-  //se der enter dentro de login /*Tem que desativar a atualizacao automatica do TextField*/
-  enterInLogin(event) {
-    if(event.keyCode === 13){		
-			document.getElementById('password').focus();
-		}
-  }
-
-  //Se der enter em Password
-  enterInPassword(event) {
-    if(event.keyCode === 13){	
-      onSignIn(document.getElementById("login").value, document.getElementById("password").value);
-		}
+    user: '',
+    password: ''
   }
 
   render() {
@@ -66,7 +53,6 @@ export default class PageSignIn extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
-            onKeyDown={this.enterInPassword}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -79,18 +65,17 @@ export default class PageSignIn extends Component {
             variant="contained"
             color="primary"
             className='submit'
-            onClick={() => {onSignIn(document.getElementById("login").value, document.getElementById("password").value); }}
-          >
+            onClick={() => {onSignIn(document.getElementById("login").value, document.getElementById("password").value);}}>
             Fazer Login
             </Button>
           <div className='opcExtras'>
             
-              <Link to={`/`} title='Recuperar Senha' className='link'>
+              <Link to={`/register`} title='Recuperar Senha' className='link'>
                 Esqueceu sua senha?
                 </Link>
             
             
-              <Link to={`/`} title='Cadastrar' className='link'>
+              <Link to={`/register`} title='Cadastrar' className='link'>
                 {"Não é cadastrado? Cadastre-se"}
               </Link>
             
