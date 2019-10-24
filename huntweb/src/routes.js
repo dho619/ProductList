@@ -8,7 +8,7 @@ import Main from './pages/main';
 import Product from './pages/product/get';
 import CreateProducts from './pages/product/create';
 import UpdateProducts from './pages/product/update';
-import { isAuthenticated} from './auth';
+import { isAuthenticated} from './services/auth';
 
 //Rotas que precisam que vc esteja logado para poder acessar
 const PrivateRoute = ({component: Component, ...rest}) => (

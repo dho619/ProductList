@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.paper p {
+  color: red;
+}
+
 
 .form {
   margin-top: 15px;

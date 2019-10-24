@@ -11,15 +11,44 @@ import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import './styles.css'; 
 
-import { onSignIn } from '../../auth';
+import { login } from '../../services/auth';
+import api from '../../services/api';
 
 
 
 export default class PageSignIn extends Component {
-  state = { //state e um objeto
-    user: '',
-    password: ''
-  }
+  state = {
+    user: "",
+    password: "",
+    error: ""
+  };
+
+  handleSignIn = async e => {
+    e.preventDefault();
+    const { user, password } = this.state;
+    if (!user || !password) {//Caso estejam vazip
+      this.setState({ error: "Preencha e-mail e senha para continuar!" });
+    } else {
+      try {
+        const response = await api.post("/usersLogin", { user, password });
+        if (response.data.jwt) {
+          login(response.data.jwt);
+          window.location.href= "/";
+        } else {
+          this.setState({
+            error:
+              "Houve um problema com o login, verifique suas credenciais. T.T"
+          });
+        }
+        
+      } catch (err) {
+        this.setState({
+          error:
+            "Houve um problema com o login, verifique suas credenciais. T.T"
+        });
+      }
+    }
+  };
 
   render() {
   return (
@@ -30,7 +59,8 @@ export default class PageSignIn extends Component {
           <LockOutlinedIcon />
         </Avatar>
         <h1>Logar</h1>
-        <form className='form' noValidate>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form className='form' onSubmit={this.handleSignIn} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -40,7 +70,7 @@ export default class PageSignIn extends Component {
             name="login"
             autoComplete="login"
             autoFocus
-            onKeyDown={this.enterInLogin}
+            onChange={e => this.setState({ user: e.target.value })}
             
           />
           <TextField
@@ -53,6 +83,7 @@ export default class PageSignIn extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => this.setState({ password: e.target.value })}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -65,7 +96,7 @@ export default class PageSignIn extends Component {
             variant="contained"
             color="primary"
             className='submit'
-            onClick={() => {onSignIn(document.getElementById("login").value, document.getElementById("password").value);}}>
+            >
             Fazer Login
             </Button>
           <div className='opcExtras'>

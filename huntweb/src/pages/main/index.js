@@ -7,7 +7,7 @@ import iconEdt from '../../img/IconEdt.png';
 import iconNew from '../../img/IconNew.png';
 
 import './styles.css';
-import { isAuthenticated} from '../../auth';
+import { isAuthenticated} from '../../services/auth';
 
 export default class Main extends Component {
     // usa-se o state para poder acessar essas variaveis externamente
@@ -20,6 +20,7 @@ export default class Main extends Component {
 //componentDidMount executa assim que e criado a pagina
     componentDidMount() { //nao clk o "() => ", pq e uma funcao da proprio js
         this.loadProducts();
+        
     }
  
     loadProducts = async (page = 1) => {

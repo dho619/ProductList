@@ -8,31 +8,46 @@ import api from '../../services/api'; //api criada com node
 
 
 export default class PageSignIn extends Component {
+  state = {
+    "user": "",
+    "password": "",
+    "error": ""
+  };
 
-  async onRegister (user, password){
-    const data = {
-      "user": user,
-      "password": password
-    };	
-    /*Enviando informacoes de login para o banco */
-    const response = await api.post('/usersCreate',data);
-    const { status } = response.data;
-    if (status == 400) {	
-      alert('Usuário já existe!'); 
+  handleSignUp = async e => {
+    e.preventDefault();
+    const { user, password } = this.state;
+    if (!user || !password) {//Caso estejam vazip
+      this.setState({ error: "Preencha todos os dados para se cadastrar" });
     } else {
-      alert('Usuario criado, faça o login, para testar!');
-      window.location.href= "/login";
-      
+      try {
+        const response = await api.post("/usersCreate", { user, password });
+        if (response.data.status === 400) {
+          this.setState({
+            error:
+              "Usuario já cadastrado!. T.T"
+          });
+        } else {
+            alert('Usuario criado, faça o login, para testar!');
+            window.location.href= "/login";
+        }
+        
+      } catch (err) {
+        this.setState({
+          error:
+            "Houve um problema ao fazer o cadastro. T.T"
+        });
+      }
     }
-    
-  }
+  };
   
   render() {
   return (
     <Container component="main" maxWidth="xs">
       <div className='paper'>
         <h1>Registrar</h1>
-        <form className='form' noValidate>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form className='form' onSubmit={this.handleSignUp} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -42,7 +57,7 @@ export default class PageSignIn extends Component {
             name="login"
             autoComplete="login"
             autoFocus
-            onKeyDown={this.enterInLogin}
+            onChange={e => this.setState({ user: e.target.value })}
             
           />
           <TextField
@@ -55,6 +70,7 @@ export default class PageSignIn extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => this.setState({ password: e.target.value })}
           />
           
           <Button
@@ -64,7 +80,6 @@ export default class PageSignIn extends Component {
             variant="contained"
             color="primary"
             className='submit'
-            onClick={() => {this.onRegister(document.getElementById("login").value, document.getElementById("password").value); }}
           >
             Registrar
             </Button>

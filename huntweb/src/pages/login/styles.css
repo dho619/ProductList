@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.paper p {
+  color: red;
+}
+
 .avatar {
   margin: 8px;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "./styles.css"; //importando o css
-import { isAuthenticated, onSignOut} from '../../auth';
+import { isAuthenticated, onSignOut} from '../../services/auth';
 import iconLogin from '../../img/IconLogin.png';
 import iconLogout from '../../img/IconLogout.png';
 
