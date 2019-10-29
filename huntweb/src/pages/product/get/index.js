@@ -7,7 +7,7 @@ import './styles.css';
 
 
 export default class Product extends Component {
-    state = {
+    state = {//states da classe
         product: {},
     };
 
@@ -20,18 +20,18 @@ export default class Product extends Component {
     }
 
     prevPage = () => {
-       window.history.back(); 
+       window.history.back(); //volta para a pagina anterior
     }
     
     render(){
-        const { product } = this.state;
+        const { product } = this.state; //diz que ele e o state
 
         return (
             <div className="product-info">
                 <h1>{product.title}</h1>
                 <p>{product.description}</p>
-                <p> 
-                    URL: <a target="_blank" href={''}>{product.url}</a>
+                <p> {/*usado rel="..." por questoes de seguranca, ler mais aqui: https://mathiasbynens.github.io/rel-noopener/#hax */}
+                    URL: <a target="_blank" rel="noopener noreferrer" href={'/'}>{product.url}</a>
                 </p>
                 <button onClick={this.prevPage}>Voltar</button>
             </div>

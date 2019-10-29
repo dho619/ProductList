@@ -3,7 +3,7 @@ Projeto dos Cursos da Rocketseat com nodeJS, ReactJS e ReactNative. Contendo a A
 
 Nescessário ter instalado até o momento nodeJS, Yarn, docker com o banco mongo instalado, sendo que o banco mongo na api esta com o nome mongodb.
 
-Implementado o backend nodeJS e o frontend em reactJS - além do que foi feito no mini curso, foi adicionado até o momento, o método Delete e Post e update, além de login e registro (Não parte inferior do Login). 
+Implementado o backend nodeJS e o frontend em reactJS - além do que foi feito no mini curso, foi adicionado até o momento, o método Delete e Post e update, além de login e registro (Registro na parte inferior do Login). 
 
 Próximas alterações: "Lembrar de mim"...
 

@@ -10,7 +10,10 @@ import CreateProducts from './pages/product/create';
 import UpdateProducts from './pages/product/update';
 import { isAuthenticated} from './services/auth';
 
-//Rotas que precisam que vc esteja logado para poder acessar
+/*
+  Rotas que precisam que vc esteja logado para poder acessar
+  obs: seria mais recomendavel, separar essas rotas em arquivo separado, mas como sao poucas, larguei juntas
+*/
 const PrivateRoute = ({component: Component, ...rest}) => (
     <Route {...rest} render={props => ( 
         isAuthenticated() ? (
@@ -21,8 +24,10 @@ const PrivateRoute = ({component: Component, ...rest}) => (
     )} />
 )
 
-//BrowserRouter define que as rotas estao dentro de um browser
-//Switch define que apenas uma rota sera chamada por vez e exact e para procura exatamente aquele endereco
+/*
+   BrowserRouter define que as rotas estao dentro de um browser
+   Switch define que apenas uma rota sera chamada por vez e exact e para procura exatamente aquele endereco
+*/
 const Routes = () => (
     <BrowserRouter> 
         <Switch>

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
+ 
+//Campos nescessarios para o produto, o id ele gera automaticamente
 const ProductSchema = new mongoose.Schema({
     title:{
         type: String,

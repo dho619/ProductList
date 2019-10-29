@@ -34,7 +34,7 @@ export default class Main extends Component {
     };   //isso "productInfo" e o mesmo que "productInfo: productInfo"
 
     prevPage = () => {
-        const { page, productInfo} = this.state;
+        const { page } = this.state;
         
         //se esta na primeira pagina, ja retorna sem fazer nada
         if (page === 1) return;
@@ -75,8 +75,8 @@ export default class Main extends Component {
         return  (
             <div className="product-list"> 
                 <div className='header'>
-                    <h1>Sua Lista de Produtos:</h1>
-                    <Link to={`/createProducts`} title='Novo Produto' className='btIcon'><img src={iconNew}/></Link>    
+                    <h1>Sua Lista de Produtos:</h1>{/*alt='' e por questao de acessibilidade, ele fornece o que e aquela imagem, para deficientes visuais ou navegacao apenas de texto*/}
+                    <Link to={`/createProducts`} title='Novo Produto' className='btIcon'><img alt='Imagem Novo Produto' src={iconNew}/></Link>    
                 </div>
                 {//aqui codigo javascript, apos "=> (" volta a ser html
                 products.map(product => (
@@ -84,9 +84,9 @@ export default class Main extends Component {
                         <strong>{product.title}</strong>
                         <p>{product.description}</p>
                         <Link to={`/products/${product._id}`}>Acessar</Link>
-                        <div className='buttons'>
-                            <Link to={`/updateProducts/${product._id}`} title='Editar' className='btIcon'><img src={iconEdt}/></Link>
-                            <button title='Deletar' className='btIcon' onClick= {() => {this.DeleteProduct(product._id, page);}}><img src={iconDel}/></button>
+                        <div className='buttons'>  {/*alt='' e por questao de acessibilidade, ele fornece o que e aquela imagem, para deficientes visuais ou navegacao apenas de texto*/}
+                            <Link to={`/updateProducts/${product._id}`} title='Editar' className='btIcon'><img alt='Imagem Editar Produto' src={iconEdt}/></Link>
+                            <button title='Deletar' className='btIcon' onClick= {() => {this.DeleteProduct(product._id, page);}}><img alt='Imagem Deletar Produto' src={iconDel}/></button>
                         </div>
                     </article>
                 ))}

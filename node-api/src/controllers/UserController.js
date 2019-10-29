@@ -27,7 +27,7 @@ function validationError(message){
 module.exports = {//modulos disponiveis externamente
 
     async index(req, res) { //funcao para mostrar usuarios
-        const { } = req.query;
+        const { } = req.query;//esta em paginate, mas nao e nescessario nesse caso, irei retirar mais para frente
         const user = await User.paginate({}, {page:1, limit: 1000}); //await e para esperar essa linha executar, 
                                                                     //antes de ir pra proxima
         return res.json(user);

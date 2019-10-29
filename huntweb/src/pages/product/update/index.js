@@ -35,23 +35,22 @@ export default class Product extends Component {
         const description = document.getElementById("descProduct").value;
         const url = document.getElementById("urlProduct").value;
 
+        //tratado campos vazio
         if (name===''){
             alert('Nescessario digitar um nome para o produto');
             return;
         }
-
         if (description===''){
             alert('Nescessario digitar uma descrição para o produto');
             return;
         }
-
         if (url===''){
             alert('Nescessario digitar uma URL para o produto');
             return;
         }
 
 
-        const data = {
+        const data = {//criando objeto em formato json
             'title': name,
             'description': description,
             'url': url
@@ -68,12 +67,10 @@ export default class Product extends Component {
 
         alert('Produto Atualizado com Sucesso!');
 
-        window.history.back();
+        window.history.back();//volta para pagina anterior
     }
 
     render(){
-        const { product } = this.state;
-
         return (
             <div className="product-info">
                 <h1>Upadate Product:</h1>

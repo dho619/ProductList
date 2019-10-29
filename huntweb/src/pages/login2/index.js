@@ -1,3 +1,11 @@
+/*
+*
+*
+ESSE CODIGO FOI APENAS PARA TESTE, NAO ESTA SENDO REDERIZADO E NEM TEM ROTA PARA O MESMO
+*
+*
+*/
+
 import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -12,7 +20,6 @@ import Container from '@material-ui/core/Container';
 
 import { Link } from 'react-router-dom';
 import { useStyles } from './styles.js'; // com material UI o css e usado de forma diferente
-
 
 async function fazerLogin(login, password){
 

@@ -5,7 +5,7 @@ import "./styles.css";
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-//Header e Routes, estao sendo criados em outras pastas, para facilitar manutencao
+//Header, Footer e Routes, estao sendo criados em outras pastas, para facilitar manutencao
 const App = () => (
   <div className="App">
         <Header />

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
+//Campos nescessarios para o usuario, o id ele gera automaticamente
 const UserSchema = new mongoose.Schema({
     user:{
         type: String,

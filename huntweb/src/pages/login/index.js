@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Container from '@material-ui/core/Container';
 
 import { Link } from 'react-router-dom';
-import './styles.css'; 
+import './styles.css'; //arquivo de css
 
 import { login } from '../../services/auth';
 import api from '../../services/api';
@@ -25,26 +25,26 @@ export default class PageSignIn extends Component {
 
   handleSignIn = async e => {
     e.preventDefault();
-    const { user, password } = this.state;
-    if (!user || !password) {//Caso estejam vazip
+    const { user, password } = this.state; //vala que eles sao states
+    if (!user || !password) {//Caso estejam vazio
       this.setState({ error: "Preencha e-mail e senha para continuar!" });
     } else {
       try {
-        const response = await api.post("/usersLogin", { user, password });
-        if (response.data.jwt) {
-          login(response.data.jwt);
-          window.location.href= "/";
+        const response = await api.post("/usersLogin", { user, password }); //envia requisicao com login e senha e espera o retorno do token
+        if (response.data.jwt) { // se ele existe
+          login(response.data.jwt);//passa o token para logar
+          window.location.href= "/"; //redireciona pra pagina inicial
         } else {
-          this.setState({
+          this.setState({ //caso login senhas sejam invalidos
             error:
               "Houve um problema com o login, verifique suas credenciais. T.T"
           });
         }
         
       } catch (err) {
-        this.setState({
+        this.setState({//caso de erro no codigo
           error:
-            "Houve um problema com o login, verifique suas credenciais. T.T"
+            "Houve um problema com o login. T.T"
         });
       }
     }
@@ -59,9 +59,10 @@ export default class PageSignIn extends Component {
           <LockOutlinedIcon />
         </Avatar>
         <h1>Logar</h1>
-        {this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <p>{this.state.error}</p>}{/*Mostra essa linha, apenas se houver erro*/}
         <form className='form' onSubmit={this.handleSignIn} noValidate>
-          <TextField
+                            {/*onSubmit, toda vez que atualiza, roda essa funcao (para rodar ao dar enter)*/}
+          <TextField        
             variant="outlined"
             margin="normal"
             fullWidth
@@ -70,7 +71,7 @@ export default class PageSignIn extends Component {
             name="login"
             autoComplete="login"
             autoFocus
-            onChange={e => this.setState({ user: e.target.value })}
+            onChange={e => this.setState({ user: e.target.value })}//guarda o login no estado
             
           />
           <TextField
@@ -83,10 +84,10 @@ export default class PageSignIn extends Component {
             type="password"
             id="password"
             autoComplete="current-password"
-            onChange={e => this.setState({ password: e.target.value })}
+            onChange={e => this.setState({ password: e.target.value })}//guarda o password no estado
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="primary" />}//ainda nao funciona
             label="Lembrar de mim"
           />
           <Button
@@ -100,8 +101,8 @@ export default class PageSignIn extends Component {
             Fazer Login
             </Button>
           <div className='opcExtras'>
-            
-              <Link to={`/register`} title='Recuperar Senha' className='link'>
+              {/*Ambos vai para o registrar novo usuario */}
+              <Link to={`/register`} title='Recuperar Senha' className='link'> 
                 Esqueceu sua senha?
                 </Link>
             
